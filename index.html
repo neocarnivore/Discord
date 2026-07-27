@@ -703,6 +703,34 @@
       font-weight:850;
     }
 
+    .neo-browser-reload-guide__inline-icon{
+      display:inline-flex;
+
+      width:19px;
+      height:19px;
+
+      margin:0 2px;
+
+      align-items:center;
+      justify-content:center;
+
+      border:1px solid rgba(84,71,255,.20);
+      border-radius:50%;
+
+      color:#4134ff;
+      background:rgba(84,71,255,.08);
+
+      font-family:
+        Arial,
+        sans-serif;
+
+      font-size:15px;
+      line-height:1;
+      font-weight:900;
+
+      vertical-align:-2px;
+    }
+
 
     /* ========================================
        アニメーション
@@ -915,6 +943,13 @@
       .neo-browser-reload-guide__text strong{
         font-size:12px;
       }
+
+      .neo-browser-reload-guide__inline-icon{
+        width:18px;
+        height:18px;
+
+        font-size:14px;
+      }
     }
 
 
@@ -958,13 +993,14 @@
     </p>
 
     <h1 class="neo-join-page__title">
-      Discordで、<br>
+      &nbsp;Discordで、<br>
       <span>コミュニティに参加。</span>
     </h1>
 
     <p class="neo-join-page__description">
       下のボタンからDiscordの招待画面を開いてください。<br>
-      正しく表示されない場合は、ブラウザの更新ボタンをタップしてください。
+      正しく表示されない場合は、<br>
+      ブラウザの更新ボタンをタップしてください。
     </p>
 
 
@@ -980,7 +1016,7 @@
         type="button"
         class="neo-community-join-v111__button"
         id="neoDiscordOpen"
-        aria-label="Discord招待リンクを新しいタブで開く"
+        aria-label="Discord招待リンクを開く"
       >
 
         <span
@@ -1100,8 +1136,12 @@
 
     <span class="neo-browser-reload-guide__text">
       うまく表示されない場合は
+
       <strong>
-        ブラウザ右下の更新ボタンをタップ
+        ブラウザ右下の更新ボタン<span
+          class="neo-browser-reload-guide__inline-icon"
+          aria-label="更新"
+        >↻</span>をタップしてください
       </strong>
     </span>
 
@@ -1112,9 +1152,6 @@
     (() => {
       const inviteUrl =
         'https://discord.com/invite/KZ56bjqDF';
-
-      const launchParameter =
-        'neo_discord_launch';
 
       const openButton =
         document.getElementById(
@@ -1142,69 +1179,13 @@
 
 
       /*
-        新しく開いたタブの処理
+        現在のタブでDiscordへ移動します。
 
-        1. 新しいタブで、このGitHub Pagesを開く
-        2. そのタブだけDiscordへ移動する
-        3. ブラウザの戻る操作でGitHub Pagesへ戻る
-        4. 戻った後は再度Discordへ自動移動しない
+        location.assignを使用するため、
+        ブラウザの戻るボタンで
+        このGitHub Pagesへ戻れます。
       */
-      const currentUrl =
-        new URL(window.location.href);
-
-      const launchToken =
-        currentUrl.searchParams.get(
-          launchParameter
-        );
-
-      if(launchToken){
-        const storageKey =
-          `neoDiscordLaunch:${launchToken}`;
-
-        const hasAlreadyLaunched =
-          sessionStorage.getItem(
-            storageKey
-          );
-
-        if(!hasAlreadyLaunched){
-          sessionStorage.setItem(
-            storageKey,
-            '1'
-          );
-
-          /*
-            GitHub Pagesの履歴を確実に作ってから、
-            同じタブでDiscordへ移動します。
-
-            ここでの「同じタブ」は、
-            ボタンから新しく開いたタブのことです。
-            元のGitHub Pagesのタブは移動しません。
-          */
-          window.setTimeout(()=>{
-            window.location.href =
-              inviteUrl;
-          },180);
-        }else{
-          /*
-            Discord画面から戻ってきた場合は、
-            URLの起動用パラメータだけ削除します。
-          */
-          currentUrl.searchParams.delete(
-            launchParameter
-          );
-
-          window.history.replaceState(
-            null,
-            '',
-            currentUrl.pathname +
-            currentUrl.search +
-            currentUrl.hash
-          );
-        }
-      }
-
-
-      const openDiscordInNewTab = () => {
+      const openDiscord = () => {
         if(isOpening){
           return;
         }
@@ -1217,55 +1198,31 @@
           );
         }
 
-        /*
-          起動ごとに固有の値を付けます。
-          戻る操作後に、自動でDiscordへ
-          再移動することを防止します。
-        */
-        const launchUrl =
-          new URL(window.location.href);
-
-        launchUrl.searchParams.set(
-          launchParameter,
-          `${Date.now()}-${Math.random()
-            .toString(36)
-            .slice(2)}`
+        setStatus(
+          'Discord招待リンクへ移動します。'
         );
 
-        /*
-          元のページは一切移動させず、
-          新しいタブだけを開きます。
-        */
-        const discordTab =
-          window.open(
-            launchUrl.toString(),
-            '_blank'
-          );
+        window.location.assign(
+          inviteUrl
+        );
+      };
 
-        if(discordTab){
-          try{
-            discordTab.opener = null;
-          }catch(error){
-            /*
-              一部ブラウザでは変更不可。
-              動作には影響しません。
-            */
-          }
 
-          setStatus(
-            'Discord招待リンクを新しいタブで開きました。'
-          );
-        }else{
-          /*
-            元ページをDiscordへ移動させる
-            フォールバックは行いません。
-          */
-          setStatus(
-            '新しいタブを開けませんでした。ブラウザのポップアップを許可して、もう一度お試しください。'
-          );
-        }
+      if(openButton){
+        openButton.addEventListener(
+          'click',
+          openDiscord
+        );
+      }
 
-        window.setTimeout(()=>{
+
+      /*
+        Discord画面からブラウザの戻るボタンで
+        戻ってきた際に、ボタンの読み込み状態を解除します。
+      */
+      window.addEventListener(
+        'pageshow',
+        ()=>{
           isOpening = false;
 
           if(openButton){
@@ -1273,16 +1230,10 @@
               'is-loading'
             );
           }
-        },800);
-      };
 
-
-      if(openButton){
-        openButton.addEventListener(
-          'click',
-          openDiscordInNewTab
-        );
-      }
+          setStatus('');
+        }
+      );
 
 
       if(copyButton){
@@ -1297,7 +1248,7 @@
                 );
 
               setStatus(
-                '招待リンクをコピーしました。'
+                '招待リンクをコピーしました！'
               );
             }catch(error){
               const textarea =
@@ -1338,7 +1289,7 @@
                 );
 
                 setStatus(
-                  '招待リンクをコピーしました。'
+                  '招待リンクをコピーしました！'
                 );
               }catch(copyError){
                 setStatus(
