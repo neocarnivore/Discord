@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
+
+  <title>Neo Carnivore Community</title>
+
+  <style>
+    :root{
+      color-scheme:light;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html,
+    body{
+      width:100%;
+      min-height:100%;
+      margin:0;
+    }
+
+    body{
+      min-height:100svh;
+      padding:
+        max(28px, env(safe-area-inset-top))
+        20px
+        max(120px, calc(96px + env(safe-area-inset-bottom)));
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      color:#171717;
+
+      background:
+        radial-gradient(
+          circle at 50% 17%,
+          rgba(118,108,255,.14),
+          rgba(255,255,255,0) 35%
+        ),
+        #fff;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        YuGothic,
+        Meiryo,
+        sans-serif;
+
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    button{
+      font:inherit;
+    }
+
+    .neo-join-page{
+      width:min(100%, 560px);
+      margin:auto;
+      text-align:center;
+    }
+
+    .neo-join-page__logo{
+      position:relative;
+      display:flex;
+      width:86px;
+      height:86px;
+      margin:0 auto 28px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(84,71,255,.16);
+      border-radius:27px;
+      color:#fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #2d20e8 0%,
+          #5a4fff 48%,
+          #978fff 100%
+        );
+
+      box-shadow:
+        0 20px 45px rgba(45,32,255,.22),
+        inset 0 1px 0 rgba(255,255,255,.5);
+    }
+
+    .neo-join-page__logo::before{
+      content:"";
+      position:absolute;
+      inset:-18px;
+      z-index:-1;
+      border-radius:36px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(84,71,255,.22),
+          rgba(255,255,255,0) 68%
+        );
+
+      filter:blur(10px);
+      pointer-events:none;
+    }
+
+    .neo-join-page__logo svg{
+      display:block;
+      width:48px;
+      height:48px;
+    }
+
+    .neo-join-page__eyebrow{
+      margin:0 0 13px;
+      color:#6459ff;
+      font-size:13px;
+      line-height:1.4;
+      letter-spacing:.12em;
+      font-weight:850;
+    }
+
+    .neo-join-page__title{
+      margin:0;
+      color:#171717;
+      font-size:clamp(38px, 8vw, 60px);
+      line-height:1.12;
+      letter-spacing:-.055em;
+      font-weight:900;
+    }
+
+    .neo-join-page__title span{
+      display:inline-block;
+
+      background:
+        linear-gradient(
+          115deg,
+          #2d20ff 0%,
+          #5447ff 28%,
+          #948dff 58%,
+          #3124e8 100%
+        );
+
+      background-size:180% 180%;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      -webkit-text-fill-color:transparent;
+
+      animation:
+        neoTitleGradient
+        4.5s
+        ease-in-out
+        infinite;
+    }
+
+    .neo-join-page__description{
+      max-width:440px;
+      margin:23px auto 0;
+      color:#666;
+      font-size:15px;
+      line-height:1.85;
+      letter-spacing:.01em;
+      font-weight:600;
+    }
+
+    .neo-join-page__button{
+      position:relative;
+      display:grid;
+      grid-template-columns:46px 1fr 46px;
+      width:100%;
+      min-height:78px;
+      margin:38px 0 0;
+      padding:4px;
+      align-items:center;
+      border:0;
+      border-radius:999px;
+      color:#fff;
+
+      background:
+        linear-gradient(
+          115deg,
+          #2419d8 0%,
+          #4134ff 22%,
+          #766cff 50%,
+          #948dff 60%,
+          #2c20dc 100%
+        );
+
+      background-size:200% 200%;
+
+      box-shadow:
+        0 15px 30px rgba(45,32,255,.27),
+        0 5px 12px rgba(45,32,255,.16),
+        inset 0 1px 0 rgba(255,255,255,.42),
+        inset 0 -1px 0 rgba(15,8,130,.18);
+
+      cursor:pointer;
+      overflow:hidden;
+      isolation:isolate;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+
+      animation:
+        neoJoinGradient
+        5s
+        ease-in-out
+        infinite;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+    }
+
+    .neo-join-page__button::before{
+      content:"";
+      position:absolute;
+      z-index:0;
+      top:-70%;
+      left:-35%;
+      width:25%;
+      height:240%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.35),
+          transparent
+        );
+
+      transform:rotate(18deg);
+
+      animation:
+        neoJoinShine
+        4.7s
+        ease-in-out
+        infinite;
+
+      pointer-events:none;
+    }
+
+    .neo-join-page__button:active{
+      transform:translateY(1px) scale(.985);
+    }
+
+    .neo-join-page__button:focus-visible,
+    .neo-retry-guide:focus-visible,
+    .neo-join-page__copy:focus-visible{
+      outline:3px solid rgba(84,71,255,.30);
+      outline-offset:5px;
+    }
+
+    .neo-join-page__button-icon,
+    .neo-join-page__button-arrow{
+      position:relative;
+      z-index:1;
+      display:flex;
+      width:46px;
+      height:46px;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+    }
+
+    .neo-join-page__button-icon{
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.13);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.22),
+        0 7px 18px rgba(20,10,130,.15);
+    }
+
+    .neo-join-page__button-arrow{
+      color:#4134ff;
+      background:#fff;
+
+      box-shadow:
+        0 7px 17px rgba(20,10,130,.22),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+      transition:
+        transform .25s ease;
+    }
+
+    .neo-join-page__button-icon svg{
+      width:25px;
+      height:25px;
+    }
+
+    .neo-join-page__button-arrow svg{
+      width:21px;
+      height:21px;
+    }
+
+    .neo-join-page__button-text{
+      position:relative;
+      z-index:1;
+      padding:0 10px;
+      text-align:center;
+      font-size:17px;
+      line-height:1.4;
+      letter-spacing:.01em;
+      font-weight:850;
+      text-shadow:0 1px 2px rgba(20,10,120,.20);
+    }
+
+    .neo-join-page__subtext{
+      margin:18px auto 0;
+      color:#8a8a8a;
+      font-size:12px;
+      line-height:1.6;
+      font-weight:650;
+    }
+
+    .neo-join-page__copy{
+      display:inline-flex;
+      margin:8px auto 0;
+      padding:10px 15px;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      border:0;
+      border-radius:999px;
+      color:#696969;
+      background:transparent;
+      font-size:13px;
+      line-height:1.4;
+      font-weight:700;
+      cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .neo-join-page__copy svg{
+      width:17px;
+      height:17px;
+    }
+
+    .neo-join-page__status{
+      min-height:20px;
+      margin:10px 0 0;
+      color:#6459ff;
+      font-size:12px;
+      line-height:1.5;
+      font-weight:750;
+    }
+
+
+    /* 右下固定UI */
+    .neo-retry-guide{
+      position:fixed;
+      right:max(16px, env(safe-area-inset-right));
+      bottom:max(16px, env(safe-area-inset-bottom));
+      z-index:9999;
+
+      display:grid;
+      grid-template-columns:42px 1fr;
+
+      width:min(310px, calc(100vw - 32px));
+      min-height:68px;
+      padding:9px 14px 9px 9px;
+
+      align-items:center;
+      gap:10px;
+
+      border:1px solid rgba(84,71,255,.14);
+      border-radius:21px;
+
+      color:#252525;
+      background:rgba(255,255,255,.93);
+
+      box-shadow:
+        0 16px 42px rgba(30,24,90,.15),
+        0 4px 12px rgba(30,24,90,.08),
+        inset 0 1px 0 rgba(255,255,255,.9);
+
+      -webkit-backdrop-filter:blur(18px);
+      backdrop-filter:blur(18px);
+
+      text-align:left;
+      cursor:pointer;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+
+      animation:
+        neoRetryAppear
+        .6s
+        .35s
+        both;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .neo-retry-guide__icon{
+      display:flex;
+      width:42px;
+      height:42px;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+      color:#fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #4134ff,
+          #8b82ff
+        );
+
+      box-shadow:
+        0 8px 18px rgba(65,52,255,.25);
+    }
+
+    .neo-retry-guide__icon svg{
+      width:22px;
+      height:22px;
+    }
+
+    .neo-retry-guide__text{
+      display:block;
+      font-size:11px;
+      line-height:1.4;
+      letter-spacing:.01em;
+      font-weight:650;
+    }
+
+    .neo-retry-guide__text strong{
+      display:block;
+      margin-top:1px;
+      color:#4134ff;
+      font-size:13px;
+      font-weight:850;
+    }
+
+
+    /* 読み込み中 */
+    .neo-join-page__button.is-loading{
+      pointer-events:none;
+      filter:saturate(.85);
+    }
+
+    .neo-join-page__button.is-loading
+    .neo-join-page__button-arrow svg{
+      animation:
+        neoArrowLoading
+        .8s
+        linear
+        infinite;
+    }
+
+
+    @keyframes neoTitleGradient{
+      0%,
+      100%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+    }
+
+    @keyframes neoJoinGradient{
+      0%,
+      100%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+    }
+
+    @keyframes neoJoinShine{
+      0%,
+      55%{
+        left:-35%;
+        opacity:0;
+      }
+
+      66%{
+        opacity:1;
+      }
+
+      85%{
+        left:115%;
+        opacity:0;
+      }
+
+      100%{
+        left:115%;
+        opacity:0;
+      }
+    }
+
+    @keyframes neoRetryAppear{
+      from{
+        opacity:0;
+        transform:translateY(18px) scale(.96);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+
+    @keyframes neoArrowLoading{
+      from{
+        transform:rotate(0deg);
+      }
+
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+
+    @media(hover:hover){
+      .neo-join-page__button:hover{
+        transform:translateY(-3px);
+
+        box-shadow:
+          0 19px 38px rgba(45,32,255,.31),
+          0 7px 16px rgba(45,32,255,.18),
+          inset 0 1px 0 rgba(255,255,255,.48),
+          inset 0 -1px 0 rgba(15,8,130,.18);
+
+        filter:
+          brightness(1.04)
+          saturate(1.05);
+      }
+
+      .neo-join-page__button:hover
+      .neo-join-page__button-arrow{
+        transform:translateX(3px);
+      }
+
+      .neo-retry-guide:hover{
+        transform:translateY(-3px);
+
+        box-shadow:
+          0 20px 48px rgba(30,24,90,.18),
+          0 6px 15px rgba(30,24,90,.10),
+          inset 0 1px 0 rgba(255,255,255,.9);
+      }
+
+      .neo-join-page__copy:hover{
+        color:#4134ff;
+        background:rgba(84,71,255,.06);
+      }
+    }
+
+
+    @media(max-width:520px){
+      body{
+        align-items:flex-start;
+        padding-top:
+          max(58px, env(safe-area-inset-top));
+      }
+
+      .neo-join-page__logo{
+        width:76px;
+        height:76px;
+        margin-bottom:25px;
+        border-radius:24px;
+      }
+
+      .neo-join-page__logo svg{
+        width:43px;
+        height:43px;
+      }
+
+      .neo-join-page__description{
+        font-size:14px;
+      }
+
+      .neo-join-page__button{
+        grid-template-columns:42px 1fr 42px;
+        min-height:72px;
+        margin-top:32px;
+      }
+
+      .neo-join-page__button-icon,
+      .neo-join-page__button-arrow{
+        width:42px;
+        height:42px;
+      }
+
+      .neo-join-page__button-text{
+        padding:0 5px;
+        font-size:15px;
+      }
+
+      .neo-retry-guide{
+        grid-template-columns:40px 1fr;
+        min-height:64px;
+        padding:8px 12px 8px 8px;
+        border-radius:19px;
+      }
+
+      .neo-retry-guide__icon{
+        width:40px;
+        height:40px;
+        border-radius:13px;
+      }
+    }
+
+
+    @media(prefers-reduced-motion:reduce){
+      .neo-join-page__title span,
+      .neo-join-page__button,
+      .neo-join-page__button::before,
+      .neo-retry-guide,
+      .neo-join-page__button.is-loading
+      .neo-join-page__button-arrow svg{
+        animation:none;
+        transition:none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="neo-join-page">
+
+    <div
+      class="neo-join-page__logo"
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M19.54 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.02a15.1 15.1 0 0 0-5.87 0L8.55 4a16.5 16.5 0 0 0-4.1 1.35C1.85 9.2 1.15 12.95 1.5 16.65a16.6 16.6 0 0 0 5.03 2.53l1.21-1.66a10.2 10.2 0 0 1-1.9-.92l.46-.36c3.67 1.7 7.65 1.7 11.28 0l.47.36c-.61.36-1.25.67-1.91.92l1.21 1.66a16.7 16.7 0 0 0 5.04-2.53c.41-4.29-.7-8-2.85-11.31ZM8.52 14.4c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.89 2.27-2 2.27Zm6.97 0c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.87 2.27-2 2.27Z"
+        />
+      </svg>
+    </div>
+
+    <p class="neo-join-page__eyebrow">
+      NEO CARNIVORE COMMUNITY
+    </p>
+
+    <h1 class="neo-join-page__title">
+      Discordで、<br>
+      <span>コミュニティに参加。</span>
+    </h1>
+
+    <p class="neo-join-page__description">
+      下のボタンからDiscordの招待画面を開いてください。<br>
+      正しく表示されない場合は、右下の更新ボタンをタップしてください。
+    </p>
+
+    <button
+      type="button"
+      class="neo-join-page__button"
+      id="neoDiscordOpen"
+    >
+
+      <span class="neo-join-page__button-icon">
+        <svg viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M19.54 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.02a15.1 15.1 0 0 0-5.87 0L8.55 4a16.5 16.5 0 0 0-4.1 1.35C1.85 9.2 1.15 12.95 1.5 16.65a16.6 16.6 0 0 0 5.03 2.53l1.21-1.66a10.2 10.2 0 0 1-1.9-.92l.46-.36c3.67 1.7 7.65 1.7 11.28 0l.47.36c-.61.36-1.25.67-1.91.92l1.21 1.66a16.7 16.7 0 0 0 5.04-2.53c.41-4.29-.7-8-2.85-11.31ZM8.52 14.4c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.89 2.27-2 2.27Zm6.97 0c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.87 2.27-2 2.27Z"
+          />
+        </svg>
+      </span>
+
+      <span class="neo-join-page__button-text">
+        Discord招待を開く
+      </span>
+
+      <span class="neo-join-page__button-arrow">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="m9 5 7 7-7 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+
+    </button>
+
+    <p class="neo-join-page__subtext">
+      招待画面は新しいタブで開きます
+    </p>
+
+    <button
+      type="button"
+      class="neo-join-page__copy"
+      id="neoDiscordCopy"
+    >
+      <svg viewBox="0 0 24 24">
+        <rect
+          x="8"
+          y="8"
+          width="11"
+          height="11"
+          rx="2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+
+        <path
+          d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      招待リンクをコピー
+    </button>
+
+    <p
+      class="neo-join-page__status"
+      id="neoDiscordStatus"
+      aria-live="polite"
+    ></p>
+
+  </main>
+
+
+  <!-- 右下固定UI -->
+  <button
+    type="button"
+    class="neo-retry-guide"
+    id="neoDiscordRetry"
+    aria-label="Discord招待画面をもう一度開く"
+  >
+
+    <span class="neo-retry-guide__icon">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M20 11a8 8 0 1 0-2.34 5.66"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.3"
+          stroke-linecap="round"
+        />
+
+        <path
+          d="M20 5v6h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+
+    <span class="neo-retry-guide__text">
+      うまく表示されない場合は
+      <strong>更新ボタンをタップ</strong>
+    </span>
+
+  </button>
+
+
+  <script>
+    (() => {
+      const inviteUrl =
+        'https://discord.com/invite/KZ56bjqDF';
+
+      const openButton =
+        document.getElementById('neoDiscordOpen');
+
+      const retryButton =
+        document.getElementById('neoDiscordRetry');
+
+      const copyButton =
+        document.getElementById('neoDiscordCopy');
+
+      const status =
+        document.getElementById('neoDiscordStatus');
+
+      let isOpening = false;
+
+
+      const setStatus = message => {
+        if(status){
+          status.textContent = message;
+        }
+      };
+
+
+      const openDiscord = retry => {
+        if(isOpening){
+          return;
+        }
+
+        isOpening = true;
+
+        if(openButton){
+          openButton.classList.add('is-loading');
+        }
+
+        /*
+          毎回新しいタブとして開きます。
+          白紙になった場合は、元の案内ページに戻り、
+          右下の更新ボタンでもう一度開けます。
+        */
+        const discordWindow =
+          window.open(
+            inviteUrl,
+            '_blank',
+            'noopener,noreferrer'
+          );
+
+        if(discordWindow){
+          setStatus(
+            retry
+              ? 'Discord招待画面をもう一度開きました。'
+              : 'Discord招待画面を開きました。'
+          );
+        }else{
+          /*
+            ポップアップがブロックされた環境では、
+            同じタブでDiscordへ移動します。
+          */
+          setStatus(
+            '新しいタブを開けなかったため、この画面から移動します。'
+          );
+
+          window.location.href = inviteUrl;
+          return;
+        }
+
+        window.setTimeout(()=>{
+          isOpening = false;
+
+          if(openButton){
+            openButton.classList.remove('is-loading');
+          }
+        },800);
+      };
+
+
+      if(openButton){
+        openButton.addEventListener('click',()=>{
+          openDiscord(false);
+        });
+      }
+
+
+      if(retryButton){
+        retryButton.addEventListener('click',()=>{
+          openDiscord(true);
+        });
+      }
+
+
+      if(copyButton){
+        copyButton.addEventListener('click',async()=>{
+          try{
+            await navigator.clipboard.writeText(
+              inviteUrl
+            );
+
+            setStatus(
+              '招待リンクをコピーしました。'
+            );
+          }catch(error){
+            const textarea =
+              document.createElement('textarea');
+
+            textarea.value = inviteUrl;
+
+            textarea.setAttribute(
+              'readonly',
+              ''
+            );
+
+            textarea.style.position = 'fixed';
+            textarea.style.top = '-9999px';
+            textarea.style.left = '-9999px';
+            textarea.style.opacity = '0';
+
+            document.body.appendChild(textarea);
+
+            textarea.focus();
+            textarea.select();
+
+            try{
+              document.execCommand('copy');
+
+              setStatus(
+                '招待リンクをコピーしました。'
+              );
+            }catch(copyError){
+              setStatus(
+                'コピーできませんでした。もう一度お試しください。'
+              );
+            }
+
+            textarea.remove();
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
