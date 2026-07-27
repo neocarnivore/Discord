@@ -10,7 +10,45 @@
 
   <meta
     name="theme-color"
-    content="#ffffff"
+    content="#5447ff"
+  >
+
+  <meta
+    name="application-name"
+    content="Neo Carnivore"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Neo Carnivore"
+  >
+
+  <link
+    rel="manifest"
+    href="./manifest.webmanifest"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="./icons/icon-192.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    sizes="192x192"
+    href="./icons/icon-192.png"
   >
 
   <title>Neo Carnivore Community</title>
@@ -33,6 +71,7 @@
 
     body{
       min-height:100svh;
+
       padding:
         max(28px, env(safe-area-inset-top))
         20px
@@ -71,21 +110,32 @@
     }
 
     .neo-join-page{
-      width:min(100%, 560px);
+      width:min(100%,580px);
       margin:auto;
       text-align:center;
     }
 
+
+    /* ========================================
+       上部Discordアイコン
+       ======================================== */
+
     .neo-join-page__logo{
       position:relative;
+
       display:flex;
+
       width:86px;
       height:86px;
+
       margin:0 auto 28px;
+
       align-items:center;
       justify-content:center;
+
       border:1px solid rgba(84,71,255,.16);
       border-radius:27px;
+
       color:#fff;
 
       background:
@@ -99,13 +149,23 @@
       box-shadow:
         0 20px 45px rgba(45,32,255,.22),
         inset 0 1px 0 rgba(255,255,255,.5);
+
+      animation:
+        neoFloatDiscordIcon
+        7s
+        ease-in-out
+        infinite;
+
+      will-change:transform;
     }
 
     .neo-join-page__logo::before{
       content:"";
+
       position:absolute;
       inset:-18px;
       z-index:-1;
+
       border-radius:36px;
 
       background:
@@ -125,19 +185,50 @@
       height:48px;
     }
 
+    @keyframes neoFloatDiscordIcon{
+      0%{
+        transform:translate3d(0,0,0);
+      }
+
+      25%{
+        transform:translate3d(0,-10px,0);
+      }
+
+      50%{
+        transform:translate3d(0,-18px,0);
+      }
+
+      75%{
+        transform:translate3d(0,-8px,0);
+      }
+
+      100%{
+        transform:translate3d(0,0,0);
+      }
+    }
+
+
+    /* ========================================
+       見出し
+       ======================================== */
+
     .neo-join-page__eyebrow{
       margin:0 0 13px;
+
       color:#6459ff;
+
       font-size:13px;
       line-height:1.4;
-      letter-spacing:.12em;
+      letter-spacing:.08em;
       font-weight:850;
     }
 
     .neo-join-page__title{
       margin:0;
+
       color:#171717;
-      font-size:clamp(38px, 8vw, 60px);
+
+      font-size:clamp(38px,8vw,60px);
       line-height:1.12;
       letter-spacing:-.055em;
       font-weight:900;
@@ -156,8 +247,10 @@
         );
 
       background-size:180% 180%;
+
       -webkit-background-clip:text;
       background-clip:text;
+
       color:transparent;
       -webkit-text-fill-color:transparent;
 
@@ -169,180 +262,327 @@
     }
 
     .neo-join-page__description{
-      max-width:440px;
+      max-width:460px;
+
       margin:23px auto 0;
+
       color:#666;
+
       font-size:15px;
       line-height:1.85;
       letter-spacing:.01em;
       font-weight:600;
     }
 
-    .neo-join-page__button{
+
+    /* ========================================
+       CTA接続部分
+       ======================================== */
+
+    .neo-community-join-v111{
       position:relative;
-      display:grid;
-      grid-template-columns:46px 1fr 46px;
+
       width:100%;
-      min-height:78px;
-      margin:38px 0 0;
-      padding:4px;
-      align-items:center;
-      border:0;
+
+      padding:48px 0 0;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        YuGothic,
+        Meiryo,
+        sans-serif;
+    }
+
+    .neo-community-join-v111__glow{
+      position:absolute;
+
+      top:calc(50% + 24px);
+      left:50%;
+
+      width:min(620px,90vw);
+      height:180px;
+
+      transform:translate(-50%,-50%);
+
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(84,71,255,.20) 0%,
+          rgba(118,108,255,.10) 38%,
+          rgba(255,255,255,0) 72%
+        );
+
+      filter:blur(20px);
+      pointer-events:none;
+    }
+
+
+    /* CTA本体 */
+
+    .neo-community-join-v111__button{
+      position:relative;
+      z-index:1;
+
+      display:flex;
+
+      width:min(100%,580px);
+      min-height:80px;
+
+      margin:0 auto;
+      padding:3px;
+
+      border:1px solid rgba(84,71,255,.24);
       border-radius:999px;
+
       color:#fff;
 
       background:
         linear-gradient(
           115deg,
           #2419d8 0%,
-          #4134ff 22%,
-          #766cff 50%,
-          #948dff 60%,
+          #4134ff 20%,
+          #766cff 46%,
+          #948dff 57%,
+          #6459ff 75%,
           #2c20dc 100%
         );
 
       background-size:200% 200%;
 
       box-shadow:
-        0 15px 30px rgba(45,32,255,.27),
-        0 5px 12px rgba(45,32,255,.16),
+        0 12px 24px rgba(45,32,255,.25),
+        0 4px 10px rgba(45,32,255,.16),
         inset 0 1px 0 rgba(255,255,255,.42),
-        inset 0 -1px 0 rgba(15,8,130,.18);
+        inset 0 -1px 0 rgba(15,8,130,.20);
 
       cursor:pointer;
+      touch-action:manipulation;
+
       overflow:hidden;
       isolation:isolate;
-      touch-action:manipulation;
+
       -webkit-tap-highlight-color:transparent;
 
+      transition:
+        transform .28s cubic-bezier(.2,.8,.2,1),
+        box-shadow .28s ease,
+        filter .28s ease;
+
       animation:
-        neoJoinGradient
+        neoCommunityJoinGradient-v111
         5s
         ease-in-out
         infinite;
-
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        filter .25s ease;
     }
 
-    .neo-join-page__button::before{
-      content:"";
+
+    /* ボタン内側 */
+
+    .neo-community-join-v111__content{
+      position:relative;
+      z-index:2;
+
+      display:grid;
+      grid-template-columns:44px 1fr 44px;
+
+      width:100%;
+      min-height:74px;
+
+      align-items:center;
+      gap:15px;
+
+      padding:12px 18px;
+
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.11) 0%,
+          rgba(255,255,255,.02) 46%,
+          rgba(15,8,130,.10) 100%
+        );
+    }
+
+
+    /* 光が横切る演出 */
+
+    .neo-community-join-v111__shine{
       position:absolute;
-      z-index:0;
-      top:-70%;
+      z-index:1;
+
+      top:-60%;
       left:-35%;
-      width:25%;
-      height:240%;
+
+      width:24%;
+      height:220%;
 
       background:
         linear-gradient(
           90deg,
           transparent,
-          rgba(255,255,255,.35),
+          rgba(255,255,255,.34),
           transparent
         );
 
       transform:rotate(18deg);
+      pointer-events:none;
 
       animation:
-        neoJoinShine
-        4.7s
+        neoCommunityJoinShine-v111
+        4.8s
         ease-in-out
         infinite;
-
-      pointer-events:none;
     }
 
-    .neo-join-page__button:active{
-      transform:translateY(1px) scale(.985);
-    }
 
-    .neo-join-page__button:focus-visible,
-    .neo-retry-guide:focus-visible,
-    .neo-join-page__copy:focus-visible{
-      outline:3px solid rgba(84,71,255,.30);
-      outline-offset:5px;
-    }
+    /* Discordアイコン */
 
-    .neo-join-page__button-icon,
-    .neo-join-page__button-arrow{
-      position:relative;
-      z-index:1;
+    .neo-community-join-v111__discord-icon{
       display:flex;
-      width:46px;
-      height:46px;
+
+      width:44px;
+      height:44px;
+
       align-items:center;
       justify-content:center;
-      border-radius:50%;
-    }
 
-    .neo-join-page__button-icon{
       border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.13);
+      border-radius:50%;
+
+      background:rgba(255,255,255,.14);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.22),
-        0 7px 18px rgba(20,10,130,.15);
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 7px 18px rgba(20,10,130,.16);
     }
 
-    .neo-join-page__button-arrow{
-      color:#4134ff;
+    .neo-community-join-v111__discord-icon svg{
+      display:block;
+      width:24px;
+      height:24px;
+    }
+
+
+    /* CTA文字 */
+
+    .neo-community-join-v111__text{
+      display:block;
+
+      text-align:center;
+
+      font-size:18px;
+      line-height:1.35;
+      letter-spacing:.02em;
+      font-weight:850;
+
+      text-shadow:
+        0 1px 2px rgba(20,10,120,.20);
+    }
+
+
+    /* 右矢印 */
+
+    .neo-community-join-v111__arrow{
+      display:flex;
+
+      width:44px;
+      height:44px;
+
+      align-items:center;
+      justify-content:center;
+
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:50%;
+
+      color:#3327e8;
       background:#fff;
 
       box-shadow:
-        0 7px 17px rgba(20,10,130,.22),
+        0 7px 18px rgba(20,10,130,.23),
         inset 0 1px 0 rgba(255,255,255,.8);
 
       transition:
-        transform .25s ease;
+        transform .28s cubic-bezier(.2,.8,.2,1),
+        box-shadow .28s ease;
     }
 
-    .neo-join-page__button-icon svg{
-      width:25px;
-      height:25px;
-    }
-
-    .neo-join-page__button-arrow svg{
+    .neo-community-join-v111__arrow svg{
+      display:block;
       width:21px;
       height:21px;
     }
 
-    .neo-join-page__button-text{
-      position:relative;
-      z-index:1;
-      padding:0 10px;
-      text-align:center;
-      font-size:17px;
-      line-height:1.4;
-      letter-spacing:.01em;
-      font-weight:850;
-      text-shadow:0 1px 2px rgba(20,10,120,.20);
+
+    /* 読み込み中 */
+
+    .neo-community-join-v111__button.is-loading{
+      pointer-events:none;
+
+      filter:
+        saturate(.88)
+        brightness(.98);
     }
 
-    .neo-join-page__subtext{
-      margin:18px auto 0;
-      color:#8a8a8a;
-      font-size:12px;
-      line-height:1.6;
-      font-weight:650;
+    .neo-community-join-v111__button.is-loading
+    .neo-community-join-v111__arrow svg{
+      animation:
+        neoButtonArrowLoading
+        .8s
+        linear
+        infinite;
     }
+
+
+    /* タップ時 */
+
+    .neo-community-join-v111__button:active{
+      transform:translateY(1px) scale(.992);
+
+      box-shadow:
+        0 8px 18px rgba(45,32,255,.21),
+        0 3px 8px rgba(45,32,255,.14),
+        inset 0 1px 0 rgba(255,255,255,.36);
+    }
+
+
+    /* キーボード操作 */
+
+    .neo-community-join-v111__button:focus-visible,
+    .neo-join-page__copy:focus-visible{
+      outline:3px solid rgba(84,71,255,.28);
+      outline-offset:6px;
+    }
+
+
+    /* ========================================
+       リンクコピー
+       ======================================== */
 
     .neo-join-page__copy{
       display:inline-flex;
-      margin:8px auto 0;
+
+      margin:20px auto 0;
       padding:10px 15px;
+
       align-items:center;
       justify-content:center;
       gap:7px;
+
       border:0;
       border-radius:999px;
+
       color:#696969;
       background:transparent;
+
       font-size:13px;
       line-height:1.4;
       font-weight:700;
+
       cursor:pointer;
       -webkit-tap-highlight-color:transparent;
     }
@@ -354,26 +594,35 @@
 
     .neo-join-page__status{
       min-height:20px;
+
       margin:10px 0 0;
+
       color:#6459ff;
+
       font-size:12px;
       line-height:1.5;
       font-weight:750;
     }
 
 
-    /* 右下固定UI */
-    .neo-retry-guide{
+    /* ========================================
+       右下固定案内UI
+       ======================================== */
+
+    .neo-browser-reload-guide{
       position:fixed;
-      right:max(16px, env(safe-area-inset-right));
-      bottom:max(16px, env(safe-area-inset-bottom));
+
+      right:max(16px,env(safe-area-inset-right));
+      bottom:max(16px,env(safe-area-inset-bottom));
+
       z-index:9999;
 
       display:grid;
       grid-template-columns:42px 1fr;
 
-      width:min(310px, calc(100vw - 32px));
+      width:min(330px,calc(100vw - 32px));
       min-height:68px;
+
       padding:9px 14px 9px 9px;
 
       align-items:center;
@@ -394,28 +643,27 @@
       backdrop-filter:blur(18px);
 
       text-align:left;
-      cursor:pointer;
-      touch-action:manipulation;
-      -webkit-tap-highlight-color:transparent;
+
+      pointer-events:none;
 
       animation:
-        neoRetryAppear
+        neoReloadGuideAppear
         .6s
         .35s
         both;
-
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease;
     }
 
-    .neo-retry-guide__icon{
+    .neo-browser-reload-guide__icon{
       display:flex;
+
       width:42px;
       height:42px;
+
       align-items:center;
       justify-content:center;
+
       border-radius:14px;
+
       color:#fff;
 
       background:
@@ -429,43 +677,36 @@
         0 8px 18px rgba(65,52,255,.25);
     }
 
-    .neo-retry-guide__icon svg{
+    .neo-browser-reload-guide__icon svg{
       width:22px;
       height:22px;
     }
 
-    .neo-retry-guide__text{
+    .neo-browser-reload-guide__text{
       display:block;
+
       font-size:11px;
-      line-height:1.4;
+      line-height:1.45;
       letter-spacing:.01em;
       font-weight:650;
     }
 
-    .neo-retry-guide__text strong{
+    .neo-browser-reload-guide__text strong{
       display:block;
+
       margin-top:1px;
+
       color:#4134ff;
+
       font-size:13px;
+      line-height:1.4;
       font-weight:850;
     }
 
 
-    /* 読み込み中 */
-    .neo-join-page__button.is-loading{
-      pointer-events:none;
-      filter:saturate(.85);
-    }
-
-    .neo-join-page__button.is-loading
-    .neo-join-page__button-arrow svg{
-      animation:
-        neoArrowLoading
-        .8s
-        linear
-        infinite;
-    }
-
+    /* ========================================
+       アニメーション
+       ======================================== */
 
     @keyframes neoTitleGradient{
       0%,
@@ -478,7 +719,7 @@
       }
     }
 
-    @keyframes neoJoinGradient{
+    @keyframes neoCommunityJoinGradient-v111{
       0%,
       100%{
         background-position:0% 50%;
@@ -489,18 +730,18 @@
       }
     }
 
-    @keyframes neoJoinShine{
+    @keyframes neoCommunityJoinShine-v111{
       0%,
       55%{
         left:-35%;
         opacity:0;
       }
 
-      66%{
+      65%{
         opacity:1;
       }
 
-      85%{
+      84%{
         left:115%;
         opacity:0;
       }
@@ -511,7 +752,17 @@
       }
     }
 
-    @keyframes neoRetryAppear{
+    @keyframes neoButtonArrowLoading{
+      from{
+        transform:rotate(0deg);
+      }
+
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    @keyframes neoReloadGuideAppear{
       from{
         opacity:0;
         transform:translateY(18px) scale(.96);
@@ -523,44 +774,35 @@
       }
     }
 
-    @keyframes neoArrowLoading{
-      from{
-        transform:rotate(0deg);
-      }
 
-      to{
-        transform:rotate(360deg);
-      }
-    }
-
+    /* ========================================
+       PCホバー
+       ======================================== */
 
     @media(hover:hover){
-      .neo-join-page__button:hover{
-        transform:translateY(-3px);
+      .neo-community-join-v111__button:hover{
+        transform:
+          translateY(-4px)
+          scale(1.012);
 
         box-shadow:
-          0 19px 38px rgba(45,32,255,.31),
-          0 7px 16px rgba(45,32,255,.18),
+          0 16px 30px rgba(45,32,255,.31),
+          0 6px 14px rgba(45,32,255,.19),
           inset 0 1px 0 rgba(255,255,255,.48),
-          inset 0 -1px 0 rgba(15,8,130,.18);
+          inset 0 -1px 0 rgba(15,8,130,.20);
 
         filter:
-          brightness(1.04)
-          saturate(1.05);
+          brightness(1.05)
+          saturate(1.06);
       }
 
-      .neo-join-page__button:hover
-      .neo-join-page__button-arrow{
-        transform:translateX(3px);
-      }
-
-      .neo-retry-guide:hover{
-        transform:translateY(-3px);
+      .neo-community-join-v111__button:hover
+      .neo-community-join-v111__arrow{
+        transform:translateX(4px);
 
         box-shadow:
-          0 20px 48px rgba(30,24,90,.18),
-          0 6px 15px rgba(30,24,90,.10),
-          inset 0 1px 0 rgba(255,255,255,.9);
+          0 9px 22px rgba(20,10,130,.28),
+          inset 0 1px 0 rgba(255,255,255,.8);
       }
 
       .neo-join-page__copy:hover{
@@ -570,17 +812,26 @@
     }
 
 
-    @media(max-width:520px){
+    /* ========================================
+       スマホ
+       ======================================== */
+
+    @media(max-width:749px){
       body{
         align-items:flex-start;
-        padding-top:
-          max(58px, env(safe-area-inset-top));
+
+        padding:
+          max(56px,env(safe-area-inset-top))
+          18px
+          max(118px,calc(94px + env(safe-area-inset-bottom)));
       }
 
       .neo-join-page__logo{
         width:76px;
         height:76px;
+
         margin-bottom:25px;
+
         border-radius:24px;
       }
 
@@ -589,49 +840,96 @@
         height:43px;
       }
 
+      .neo-join-page__eyebrow{
+        font-size:12px;
+      }
+
       .neo-join-page__description{
         font-size:14px;
       }
 
-      .neo-join-page__button{
-        grid-template-columns:42px 1fr 42px;
+      .neo-community-join-v111{
+        padding:40px 0 0;
+      }
+
+      .neo-community-join-v111__button{
         min-height:72px;
-        margin-top:32px;
       }
 
-      .neo-join-page__button-icon,
-      .neo-join-page__button-arrow{
-        width:42px;
-        height:42px;
+      .neo-community-join-v111__content{
+        grid-template-columns:40px 1fr 40px;
+
+        min-height:66px;
+
+        gap:10px;
+
+        padding:10px 12px;
       }
 
-      .neo-join-page__button-text{
-        padding:0 5px;
+      .neo-community-join-v111__discord-icon,
+      .neo-community-join-v111__arrow{
+        width:40px;
+        height:40px;
+      }
+
+      .neo-community-join-v111__discord-icon svg{
+        width:22px;
+        height:22px;
+      }
+
+      .neo-community-join-v111__arrow svg{
+        width:19px;
+        height:19px;
+      }
+
+      .neo-community-join-v111__text{
         font-size:15px;
+        letter-spacing:.01em;
       }
 
-      .neo-retry-guide{
+      .neo-browser-reload-guide{
         grid-template-columns:40px 1fr;
+
+        width:min(340px,calc(100vw - 28px));
         min-height:64px;
+
+        right:max(14px,env(safe-area-inset-right));
+        bottom:max(14px,env(safe-area-inset-bottom));
+
         padding:8px 12px 8px 8px;
+
         border-radius:19px;
       }
 
-      .neo-retry-guide__icon{
+      .neo-browser-reload-guide__icon{
         width:40px;
         height:40px;
+
         border-radius:13px;
+      }
+
+      .neo-browser-reload-guide__text{
+        font-size:10px;
+      }
+
+      .neo-browser-reload-guide__text strong{
+        font-size:12px;
       }
     }
 
 
+    /* ========================================
+       動きを抑える設定
+       ======================================== */
+
     @media(prefers-reduced-motion:reduce){
+      .neo-join-page__logo,
       .neo-join-page__title span,
-      .neo-join-page__button,
-      .neo-join-page__button::before,
-      .neo-retry-guide,
-      .neo-join-page__button.is-loading
-      .neo-join-page__button-arrow svg{
+      .neo-community-join-v111__button,
+      .neo-community-join-v111__shine,
+      .neo-community-join-v111__button.is-loading
+      .neo-community-join-v111__arrow svg,
+      .neo-browser-reload-guide{
         animation:none;
         transition:none;
       }
@@ -656,7 +954,7 @@
     </div>
 
     <p class="neo-join-page__eyebrow">
-      NEO CARNIVORE COMMUNITY
+      肉食実践者コミュニティ
     </p>
 
     <h1 class="neo-join-page__title">
@@ -666,47 +964,72 @@
 
     <p class="neo-join-page__description">
       下のボタンからDiscordの招待画面を開いてください。<br>
-      正しく表示されない場合は、右下の更新ボタンをタップしてください。
+      正しく表示されない場合は、ブラウザの更新ボタンをタップしてください。
     </p>
 
-    <button
-      type="button"
-      class="neo-join-page__button"
-      id="neoDiscordOpen"
-    >
 
-      <span class="neo-join-page__button-icon">
-        <svg viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M19.54 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.02a15.1 15.1 0 0 0-5.87 0L8.55 4a16.5 16.5 0 0 0-4.1 1.35C1.85 9.2 1.15 12.95 1.5 16.65a16.6 16.6 0 0 0 5.03 2.53l1.21-1.66a10.2 10.2 0 0 1-1.9-.92l.46-.36c3.67 1.7 7.65 1.7 11.28 0l.47.36c-.61.36-1.25.67-1.91.92l1.21 1.66a16.7 16.7 0 0 0 5.04-2.53c.41-4.29-.7-8-2.85-11.31ZM8.52 14.4c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.89 2.27-2 2.27Zm6.97 0c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.87 2.27-2 2.27Z"
-          />
-        </svg>
-      </span>
+    <!-- Discord CTA -->
+    <div class="neo-community-join-v111">
 
-      <span class="neo-join-page__button-text">
-        Discord招待を開く
-      </span>
+      <div
+        class="neo-community-join-v111__glow"
+        aria-hidden="true"
+      ></div>
 
-      <span class="neo-join-page__button-arrow">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="m9 5 7 7-7 7"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </span>
+      <button
+        type="button"
+        class="neo-community-join-v111__button"
+        id="neoDiscordOpen"
+        aria-label="Discord招待リンクを新しいタブで開く"
+      >
 
-    </button>
+        <span
+          class="neo-community-join-v111__shine"
+          aria-hidden="true"
+        ></span>
 
-    <p class="neo-join-page__subtext">
-      招待画面は新しいタブで開きます
-    </p>
+        <span class="neo-community-join-v111__content">
 
+          <span
+            class="neo-community-join-v111__discord-icon"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M19.54 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.02a15.1 15.1 0 0 0-5.87 0L8.55 4a16.5 16.5 0 0 0-4.1 1.35C1.85 9.2 1.15 12.95 1.5 16.65a16.6 16.6 0 0 0 5.03 2.53l1.21-1.66a10.2 10.2 0 0 1-1.9-.92l.46-.36c3.67 1.7 7.65 1.7 11.28 0l.47.36c-.61.36-1.25.67-1.91.92l1.21 1.66a16.7 16.7 0 0 0 5.04-2.53c.41-4.29-.7-8-2.85-11.31ZM8.52 14.4c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.89 2.27-2 2.27Zm6.97 0c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.87 2.27-2 2.27Z"
+              />
+            </svg>
+          </span>
+
+          <span class="neo-community-join-v111__text">
+            Discord招待リンクを開く
+          </span>
+
+          <span
+            class="neo-community-join-v111__arrow"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                d="m9 5 7 7-7 7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <!-- コピー -->
     <button
       type="button"
       class="neo-join-page__copy"
@@ -745,15 +1068,16 @@
   </main>
 
 
-  <!-- 右下固定UI -->
-  <button
-    type="button"
-    class="neo-retry-guide"
-    id="neoDiscordRetry"
-    aria-label="Discord招待画面をもう一度開く"
+  <!-- 右下固定案内UI -->
+  <aside
+    class="neo-browser-reload-guide"
+    aria-label="Discord招待画面が表示されない場合の案内"
   >
 
-    <span class="neo-retry-guide__icon">
+    <span
+      class="neo-browser-reload-guide__icon"
+      aria-hidden="true"
+    >
       <svg viewBox="0 0 24 24">
         <path
           d="M20 11a8 8 0 1 0-2.34 5.66"
@@ -774,12 +1098,14 @@
       </svg>
     </span>
 
-    <span class="neo-retry-guide__text">
+    <span class="neo-browser-reload-guide__text">
       うまく表示されない場合は
-      <strong>更新ボタンをタップ</strong>
+      <strong>
+        ブラウザ右下の更新ボタンをタップ
+      </strong>
     </span>
 
-  </button>
+  </aside>
 
 
   <script>
@@ -787,17 +1113,23 @@
       const inviteUrl =
         'https://discord.com/invite/KZ56bjqDF';
 
-      const openButton =
-        document.getElementById('neoDiscordOpen');
+      const launchParameter =
+        'neo_discord_launch';
 
-      const retryButton =
-        document.getElementById('neoDiscordRetry');
+      const openButton =
+        document.getElementById(
+          'neoDiscordOpen'
+        );
 
       const copyButton =
-        document.getElementById('neoDiscordCopy');
+        document.getElementById(
+          'neoDiscordCopy'
+        );
 
       const status =
-        document.getElementById('neoDiscordStatus');
+        document.getElementById(
+          'neoDiscordStatus'
+        );
 
       let isOpening = false;
 
@@ -809,7 +1141,70 @@
       };
 
 
-      const openDiscord = retry => {
+      /*
+        新しく開いたタブの処理
+
+        1. 新しいタブで、このGitHub Pagesを開く
+        2. そのタブだけDiscordへ移動する
+        3. ブラウザの戻る操作でGitHub Pagesへ戻る
+        4. 戻った後は再度Discordへ自動移動しない
+      */
+      const currentUrl =
+        new URL(window.location.href);
+
+      const launchToken =
+        currentUrl.searchParams.get(
+          launchParameter
+        );
+
+      if(launchToken){
+        const storageKey =
+          `neoDiscordLaunch:${launchToken}`;
+
+        const hasAlreadyLaunched =
+          sessionStorage.getItem(
+            storageKey
+          );
+
+        if(!hasAlreadyLaunched){
+          sessionStorage.setItem(
+            storageKey,
+            '1'
+          );
+
+          /*
+            GitHub Pagesの履歴を確実に作ってから、
+            同じタブでDiscordへ移動します。
+
+            ここでの「同じタブ」は、
+            ボタンから新しく開いたタブのことです。
+            元のGitHub Pagesのタブは移動しません。
+          */
+          window.setTimeout(()=>{
+            window.location.href =
+              inviteUrl;
+          },180);
+        }else{
+          /*
+            Discord画面から戻ってきた場合は、
+            URLの起動用パラメータだけ削除します。
+          */
+          currentUrl.searchParams.delete(
+            launchParameter
+          );
+
+          window.history.replaceState(
+            null,
+            '',
+            currentUrl.pathname +
+            currentUrl.search +
+            currentUrl.hash
+          );
+        }
+      }
+
+
+      const openDiscordInNewTab = () => {
         if(isOpening){
           return;
         }
@@ -817,111 +1212,184 @@
         isOpening = true;
 
         if(openButton){
-          openButton.classList.add('is-loading');
+          openButton.classList.add(
+            'is-loading'
+          );
         }
 
         /*
-          毎回新しいタブとして開きます。
-          白紙になった場合は、元の案内ページに戻り、
-          右下の更新ボタンでもう一度開けます。
+          起動ごとに固有の値を付けます。
+          戻る操作後に、自動でDiscordへ
+          再移動することを防止します。
         */
-        const discordWindow =
+        const launchUrl =
+          new URL(window.location.href);
+
+        launchUrl.searchParams.set(
+          launchParameter,
+          `${Date.now()}-${Math.random()
+            .toString(36)
+            .slice(2)}`
+        );
+
+        /*
+          元のページは一切移動させず、
+          新しいタブだけを開きます。
+        */
+        const discordTab =
           window.open(
-            inviteUrl,
-            '_blank',
-            'noopener,noreferrer'
+            launchUrl.toString(),
+            '_blank'
           );
 
-        if(discordWindow){
+        if(discordTab){
+          try{
+            discordTab.opener = null;
+          }catch(error){
+            /*
+              一部ブラウザでは変更不可。
+              動作には影響しません。
+            */
+          }
+
           setStatus(
-            retry
-              ? 'Discord招待画面をもう一度開きました。'
-              : 'Discord招待画面を開きました。'
+            'Discord招待リンクを新しいタブで開きました。'
           );
         }else{
           /*
-            ポップアップがブロックされた環境では、
-            同じタブでDiscordへ移動します。
+            元ページをDiscordへ移動させる
+            フォールバックは行いません。
           */
           setStatus(
-            '新しいタブを開けなかったため、この画面から移動します。'
+            '新しいタブを開けませんでした。ブラウザのポップアップを許可して、もう一度お試しください。'
           );
-
-          window.location.href = inviteUrl;
-          return;
         }
 
         window.setTimeout(()=>{
           isOpening = false;
 
           if(openButton){
-            openButton.classList.remove('is-loading');
+            openButton.classList.remove(
+              'is-loading'
+            );
           }
         },800);
       };
 
 
       if(openButton){
-        openButton.addEventListener('click',()=>{
-          openDiscord(false);
-        });
-      }
-
-
-      if(retryButton){
-        retryButton.addEventListener('click',()=>{
-          openDiscord(true);
-        });
+        openButton.addEventListener(
+          'click',
+          openDiscordInNewTab
+        );
       }
 
 
       if(copyButton){
-        copyButton.addEventListener('click',async()=>{
-          try{
-            await navigator.clipboard.writeText(
-              inviteUrl
-            );
-
-            setStatus(
-              '招待リンクをコピーしました。'
-            );
-          }catch(error){
-            const textarea =
-              document.createElement('textarea');
-
-            textarea.value = inviteUrl;
-
-            textarea.setAttribute(
-              'readonly',
-              ''
-            );
-
-            textarea.style.position = 'fixed';
-            textarea.style.top = '-9999px';
-            textarea.style.left = '-9999px';
-            textarea.style.opacity = '0';
-
-            document.body.appendChild(textarea);
-
-            textarea.focus();
-            textarea.select();
-
+        copyButton.addEventListener(
+          'click',
+          async()=>{
             try{
-              document.execCommand('copy');
+              await navigator
+                .clipboard
+                .writeText(
+                  inviteUrl
+                );
 
               setStatus(
                 '招待リンクをコピーしました。'
               );
-            }catch(copyError){
-              setStatus(
-                'コピーできませんでした。もう一度お試しください。'
-              );
-            }
+            }catch(error){
+              const textarea =
+                document.createElement(
+                  'textarea'
+                );
 
-            textarea.remove();
+              textarea.value =
+                inviteUrl;
+
+              textarea.setAttribute(
+                'readonly',
+                ''
+              );
+
+              textarea.style.position =
+                'fixed';
+
+              textarea.style.top =
+                '-9999px';
+
+              textarea.style.left =
+                '-9999px';
+
+              textarea.style.opacity =
+                '0';
+
+              document.body.appendChild(
+                textarea
+              );
+
+              textarea.focus();
+              textarea.select();
+
+              try{
+                document.execCommand(
+                  'copy'
+                );
+
+                setStatus(
+                  '招待リンクをコピーしました。'
+                );
+              }catch(copyError){
+                setStatus(
+                  'コピーできませんでした。もう一度お試しください。'
+                );
+              }
+
+              textarea.remove();
+            }
           }
-        });
+        );
       }
+    })();
+  </script>
+
+
+  <!-- Service Worker登録 -->
+  <script>
+    (() => {
+      if(
+        !(
+          'serviceWorker' in
+          navigator
+        )
+      ){
+        return;
+      }
+
+      window.addEventListener(
+        'load',
+        async()=>{
+          try{
+            const registration =
+              await navigator
+                .serviceWorker
+                .register(
+                  './sw.js',
+                  {
+                    scope:'./'
+                  }
+                );
+
+            registration.update();
+          }catch(error){
+            console.error(
+              'Service Workerの登録に失敗しました。',
+              error
+            );
+          }
+        }
+      );
     })();
   </script>
 
