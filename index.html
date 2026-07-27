@@ -383,7 +383,9 @@
       overflow:hidden;
       isolation:isolate;
 
+      text-decoration:none;
       -webkit-tap-highlight-color:transparent;
+      -webkit-touch-callout:default;
 
       transition:
         transform .28s cubic-bezier(.2,.8,.2,1),
@@ -988,7 +990,7 @@
     </h1>
 
     <p class="neo-join-page__description">
-      招待リンクが正しく表示されない場合は、<br>
+      正しく表示されない場合は、<br>
       ブラウザ右下の更新ボタン<span
         class="neo-browser-reload-guide__inline-icon"
         aria-label="更新"
@@ -1004,8 +1006,8 @@
         aria-hidden="true"
       ></div>
 
-      <button
-        type="button"
+      <a
+        href="https://discord.com/invite/KZ56bjqDF"
         class="neo-community-join-v111__button"
         id="neoDiscordOpen"
         aria-label="Discord招待リンクを開く"
@@ -1052,7 +1054,7 @@
 
         </span>
 
-      </button>
+      </a>
 
     </div>
 
@@ -1145,11 +1147,6 @@
       const inviteUrl =
         'https://discord.com/invite/KZ56bjqDF';
 
-      const openButton =
-        document.getElementById(
-          'neoDiscordOpen'
-        );
-
       const copyButton =
         document.getElementById(
           'neoDiscordCopy'
@@ -1160,54 +1157,12 @@
           'neoDiscordStatus'
         );
 
-      let isOpening = false;
-
 
       const setStatus = message => {
         if(status){
           status.textContent = message;
         }
       };
-
-
-      /*
-        現在のタブでDiscordへ移動します。
-
-        location.assignを使用するため、
-        ブラウザの戻るボタンで
-        このGitHub Pagesへ戻れます。
-      */
-      const openDiscord = () => {
-        if(isOpening){
-          return;
-        }
-
-        isOpening = true;
-
-        window.location.assign(
-          inviteUrl
-        );
-      };
-
-
-      if(openButton){
-        openButton.addEventListener(
-          'click',
-          openDiscord
-        );
-      }
-
-
-      /*
-        Discord画面からブラウザの戻るボタンで
-        戻ってきた際に状態を解除します。
-      */
-      window.addEventListener(
-        'pageshow',
-        ()=>{
-          isOpening = false;
-        }
-      );
 
 
       if(copyButton){
