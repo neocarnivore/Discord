@@ -4,49 +4,51 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#5b43f5">
-  <meta name="description" content="肉食を実践する仲間とつながる、Neo Carnivoreの月額制Discordコミュニティ。月額980円で参加できます。">
+  <meta name="description" content="Neo Carnivore 肉食実践者コミュニティ">
   <meta property="og:title" content="Neo Carnivore｜肉食実践者コミュニティ">
-  <meta property="og:description" content="ひとりでは続けにくい肉食を、仲間と一緒に。月額980円のDiscordコミュニティ。">
+  <meta property="og:description" content="ひとりでは続けにくい肉食を、仲間と一緒に。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://neocarnivore.github.io/Discord/">
-  <meta name="application-name" content="Neo Carnivore">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Neo Carnivore">
   <link rel="manifest" href="./manifest.webmanifest">
   <title>Neo Carnivore｜肉食実践者コミュニティ</title>
   <style>
-    :root{color-scheme:light;--ink:#17151f;--muted:#686574;--purple:#5b43f5;--purple-dark:#3823d4;--purple-light:#f1eeff;--line:#e9e6f1}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#faf9ff 0,#fff 46%);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,Meiryo,sans-serif;-webkit-font-smoothing:antialiased}.wrap{width:min(100% - 40px,760px);margin-inline:auto}
-    .hero{position:relative;overflow:hidden;padding:max(32px,env(safe-area-inset-top)) 0 72px;text-align:center}.hero:before{content:"";position:absolute;z-index:-1;top:-220px;left:50%;width:620px;height:620px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(112,84,255,.22),rgba(112,84,255,0) 68%)}
-    .brand{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:850;letter-spacing:.04em}.mark{display:grid;width:38px;height:38px;place-items:center;border-radius:13px;color:#fff;background:linear-gradient(135deg,var(--purple-dark),#8875ff);box-shadow:0 9px 22px rgba(91,67,245,.25)}.mark svg{width:22px}
-    .eyebrow{margin:58px 0 14px;color:var(--purple);font-size:13px;font-weight:900;letter-spacing:.12em}h1{margin:0;font-size:clamp(38px,8vw,65px);line-height:1.1;letter-spacing:-.055em;font-weight:950}h1 span{color:var(--purple)}.lead{max-width:590px;margin:23px auto 0;color:var(--muted);font-size:clamp(16px,3.8vw,19px);line-height:1.9;font-weight:650}
-    .price-card{max-width:540px;margin:38px auto 0;padding:28px;border:1px solid rgba(91,67,245,.17);border-radius:28px;background:rgba(255,255,255,.9);box-shadow:0 22px 70px rgba(53,38,130,.12);backdrop-filter:blur(12px)}.price-label{margin:0 0 5px;color:var(--muted);font-size:13px;font-weight:800}.price{display:flex;align-items:baseline;justify-content:center;gap:5px}.price strong{font-size:48px;letter-spacing:-.05em}.price span{font-size:17px;font-weight:850}.renew{margin:3px 0 22px;color:var(--muted);font-size:13px;font-weight:650}
-    .cta{display:flex;min-height:70px;align-items:center;justify-content:center;gap:12px;border-radius:999px;color:#fff;background:linear-gradient(115deg,var(--purple-dark),#7258ff 58%,var(--purple));box-shadow:0 15px 34px rgba(75,52,220,.28);font-size:17px;font-weight:900;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}.cta svg{width:22px}.cta:hover{transform:translateY(-2px);box-shadow:0 19px 40px rgba(75,52,220,.34)}.cta:active{transform:scale(.99)}.cta:focus-visible{outline:3px solid rgba(91,67,245,.3);outline-offset:5px}.micro{margin:15px 0 0;color:#777380;font-size:12px;line-height:1.65;font-weight:650}
-    section{padding:72px 0}.section-soft{background:#faf9ff;border-block:1px solid #f0edf8}h2{margin:0;text-align:center;font-size:clamp(28px,6vw,40px);line-height:1.3;letter-spacing:-.035em}.section-lead{margin:14px auto 34px;text-align:center;color:var(--muted);line-height:1.8;font-weight:600}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{padding:25px 22px;border:1px solid var(--line);border-radius:22px;background:#fff}.feature-icon{display:grid;width:43px;height:43px;margin-bottom:18px;place-items:center;border-radius:14px;color:var(--purple);background:var(--purple-light);font-size:21px}.feature h3{margin:0 0 9px;font-size:17px}.feature p{margin:0;color:var(--muted);font-size:14px;line-height:1.75;font-weight:550}
-    .steps{display:grid;gap:14px;max-width:590px;margin:34px auto 0}.step{display:grid;grid-template-columns:48px 1fr;gap:17px;align-items:start;padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff}.num{display:grid;width:48px;height:48px;place-items:center;border-radius:50%;color:#fff;background:var(--purple);font-weight:900}.step h3{margin:2px 0 5px;font-size:17px}.step p{margin:0;color:var(--muted);font-size:14px;line-height:1.7;font-weight:550}
-    .final{padding-bottom:max(92px,calc(70px + env(safe-area-inset-bottom)));text-align:center}.final-card{padding:38px 28px;border-radius:28px;color:#fff;background:linear-gradient(145deg,#27186f,#5b43f5 65%,#806bff);box-shadow:0 24px 60px rgba(63,43,180,.22)}.final-card h2{font-size:clamp(27px,6vw,38px)}.final-card p{margin:12px 0 25px;color:rgba(255,255,255,.82);line-height:1.8;font-weight:600}.final-card .cta{color:var(--purple-dark);background:#fff;box-shadow:none}.legal{max-width:590px;margin:18px auto 0!important;color:rgba(255,255,255,.72)!important;font-size:11px;line-height:1.75}footer{padding:25px 20px;text-align:center;color:#8a8791;font-size:11px;border-top:1px solid var(--line)}
-    @media(max-width:680px){.wrap{width:min(100% - 28px,760px)}.hero{padding-bottom:55px}.eyebrow{margin-top:47px}.lead br{display:none}.price-card{padding:22px 18px;border-radius:24px}.price strong{font-size:43px}.features{grid-template-columns:1fr}.feature{display:grid;grid-template-columns:43px 1fr;column-gap:16px}.feature-icon{grid-row:1/3;margin:0}.feature h3{align-self:end}.feature p{grid-column:2}.final-card{padding:34px 20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta{transition:none}}
+    :root{color-scheme:light;--ink:#17151f;--purple:#5b43f5;--purple-dark:#3521d8}
+    *{box-sizing:border-box}
+    html,body{min-height:100%;margin:0}
+    body{display:grid;min-height:100svh;place-items:center;padding:max(30px,env(safe-area-inset-top)) 20px max(30px,env(safe-area-inset-bottom));overflow:hidden;color:var(--ink);background:radial-gradient(circle at 50% 20%,rgba(126,105,255,.2),transparent 37%),#fff;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,Meiryo,sans-serif;-webkit-font-smoothing:antialiased}
+    main{width:min(100%,620px);text-align:center}
+    .mark{display:grid;width:82px;height:82px;margin:0 auto 38px;place-items:center;border:1px solid rgba(255,255,255,.42);border-radius:27px;color:#fff;background:linear-gradient(135deg,var(--purple-dark),#8c7cff);box-shadow:0 20px 45px rgba(68,45,220,.28),0 0 55px rgba(91,67,245,.18);animation:float 6s ease-in-out infinite}
+    .mark svg{width:46px;height:46px}
+    .eyebrow{margin:0 0 16px;color:var(--purple);font-size:13px;font-weight:900;letter-spacing:.11em}
+    h1{margin:0;font-size:clamp(40px,9vw,66px);line-height:1.1;letter-spacing:-.055em;font-weight:950}
+    h1 span{display:block;color:var(--purple)}
+    .cta-wrap{position:relative;margin-top:50px}
+    .cta-wrap:before{content:"";position:absolute;inset:-30px -20px;background:radial-gradient(ellipse,rgba(91,67,245,.2),transparent 68%);filter:blur(15px);pointer-events:none}
+    .cta{position:relative;display:grid;grid-template-columns:46px 1fr 46px;min-height:78px;padding:3px;align-items:center;gap:12px;border-radius:999px;color:#fff;background:linear-gradient(115deg,var(--purple-dark),#7660ff 55%,#4933ec);box-shadow:0 16px 34px rgba(67,44,220,.3);font-size:17px;font-weight:900;text-decoration:none;transition:transform .22s ease,box-shadow .22s ease}
+    .cta-icon,.arrow{display:grid;width:43px;height:43px;place-items:center;border-radius:50%}.cta-icon{margin-left:8px;background:rgba(255,255,255,.14)}.cta-icon svg{width:24px}.arrow{margin-right:8px;color:var(--purple-dark);background:#fff}.arrow svg{width:20px}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 21px 42px rgba(67,44,220,.36)}.cta:active{transform:scale(.99)}.cta:focus-visible{outline:3px solid rgba(91,67,245,.3);outline-offset:6px}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+    @media(max-width:540px){body{align-items:start;padding-top:max(72px,env(safe-area-inset-top))}.mark{width:74px;height:74px;margin-bottom:32px;border-radius:24px}.mark svg{width:42px}.cta-wrap{margin-top:42px}.cta{grid-template-columns:42px 1fr 42px;min-height:72px;gap:8px;font-size:15px}.cta-icon,.arrow{width:39px;height:39px}.cta-icon{margin-left:6px}.arrow{margin-right:6px}}
+    @media(prefers-reduced-motion:reduce){.mark{animation:none}.cta{transition:none}}
   </style>
 </head>
 <body>
-  <header class="hero"><div class="wrap">
-    <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.54 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.02a15.1 15.1 0 0 0-5.87 0L8.55 4a16.5 16.5 0 0 0-4.1 1.35C1.85 9.2 1.15 12.95 1.5 16.65a16.6 16.6 0 0 0 5.03 2.53l1.21-1.66a10.2 10.2 0 0 1-1.9-.92l.46-.36c3.67 1.7 7.65 1.7 11.28 0l.47.36c-.61.36-1.25.67-1.91.92l1.21 1.66a16.7 16.7 0 0 0 5.04-2.53c.41-4.29-.7-8-2.85-11.31ZM8.52 14.4c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.89 2.27-2 2.27Zm6.97 0c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.87 2.27-2 2.27Z"/></svg></span>Neo Carnivore</div>
-    <p class="eyebrow">肉食実践者コミュニティ</p><h1>ひとりでは続けにくい肉食を、<br><span>仲間と一緒に。</span></h1><p class="lead">実践者同士で日々の経験を共有しながら、長期的な継続を目指す会員制Discordコミュニティです。</p>
-    <div class="price-card"><p class="price-label">月額会員プラン</p><div class="price"><strong>980円</strong><span>／月</span></div><p class="renew">毎月自動更新・いつでも解約可能</p><a class="cta" href="https://buy.stripe.com/9B67sN66R8hCaeBaTGcbC02" aria-label="月額980円で決済画面へ進む"><span>月額980円で参加する</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a><p class="micro">ボタンを押すとStripeの安全な決済画面へ移動します。<br>決済完了後、画面の案内に沿ってDiscordを連携してください。</p></div>
-  </div></header>
   <main>
-    <section class="section-soft"><div class="wrap"><h2>参加するとできること</h2><p class="section-lead">同じ食生活に取り組む仲間がいるから、実践を日常にしやすくなります。</p><div class="features">
-      <article class="feature"><div class="feature-icon">🥩</div><h3>実践を共有</h3><p>日々の食事や工夫、実践を通じた気づきをメンバー同士で共有できます。</p></article>
-      <article class="feature"><div class="feature-icon">💬</div><h3>仲間と交流</h3><p>同じテーマに関心を持つ人とつながり、ひとりで抱え込まずに継続できます。</p></article>
-      <article class="feature"><div class="feature-icon">📚</div><h3>情報を確認</h3><p>Discord内の案内やライブラリから、コミュニティの情報を確認できます。</p></article>
-    </div></div></section>
-    <section><div class="wrap"><h2>参加までの流れ</h2><div class="steps">
-      <article class="step"><div class="num">1</div><div><h3>Stripeで決済</h3><p>月額980円の会員プランをお申し込みください。</p></div></article>
-      <article class="step"><div class="num">2</div><div><h3>Discordアカウントを連携</h3><p>決済後の画面に表示される案内からDiscord認証へ進みます。</p></div></article>
-      <article class="step"><div class="num">3</div><div><h3>コミュニティへ参加</h3><p>認証が完了すると会員ロールが付与され、コミュニティを利用できます。</p></div></article>
-    </div></div></section>
-    <section class="final"><div class="wrap"><div class="final-card"><h2>肉食を、続けられる環境へ。</h2><p>Neo Carnivoreで、実践する仲間とつながりましょう。</p><a class="cta" href="https://buy.stripe.com/9B67sN66R8hCaeBaTGcbC02"><span>月額980円で参加する</span><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a><p class="legal">月額980円（税込）の自動更新プランです。解約するまで毎月請求されます。お申し込み前にStripe決済画面の内容をご確認ください。</p></div></div></section>
-  </main><footer>© Neo Carnivore</footer>
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.54 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.02a15.1 15.1 0 0 0-5.87 0L8.55 4a16.5 16.5 0 0 0-4.1 1.35C1.85 9.2 1.15 12.95 1.5 16.65a16.6 16.6 0 0 0 5.03 2.53l1.21-1.66a10.2 10.2 0 0 1-1.9-.92l.46-.36c3.67 1.7 7.65 1.7 11.28 0l.47.36c-.61.36-1.25.67-1.91.92l1.21 1.66a16.7 16.7 0 0 0 5.04-2.53c.41-4.29-.7-8-2.85-11.31ZM8.52 14.4c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.89 2.27-2 2.27Zm6.97 0c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.87 2-2 2Z"/></svg>
+    </div>
+    <p class="eyebrow">NEO CARNIVORE</p>
+    <h1>ひとりでは続けにくい肉食を、<span>仲間と一緒に。</span></h1>
+    <div class="cta-wrap">
+      <a class="cta" href="https://neocarnivore.myshopify.com/products/肉食実践者コミュニティ" aria-label="肉食実践者コミュニティの詳細を見る">
+        <span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.54 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.02a15.1 15.1 0 0 0-5.87 0L8.55 4a16.5 16.5 0 0 0-4.1 1.35C1.85 9.2 1.15 12.95 1.5 16.65a16.6 16.6 0 0 0 5.03 2.53l1.21-1.66a10.2 10.2 0 0 1-1.9-.92l.46-.36c3.67 1.7 7.65 1.7 11.28 0l.47.36c-.61.36-1.25.67-1.91.92l1.21 1.66a16.7 16.7 0 0 0 5.04-2.53c.41-4.29-.7-8-2.85-11.31ZM8.52 14.4c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.89 2.27-2 2.27Zm6.97 0c-1.1 0-2-1.02-2-2.27s.88-2.28 2-2.28c1.13 0 2.02 1.03 2 2.28 0 1.25-.87 2-2 2Z"/></svg></span>
+        <span>コミュニティの詳細を見る</span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </main>
   <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js',{scope:'./'}).then(registration=>registration.update()).catch(()=>{}))}</script>
 </body>
 </html>

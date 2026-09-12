@@ -7,7 +7,7 @@
 */
 
 const NEO_CACHE_VERSION =
-  'neo-discord-membership-v3';
+  'neo-community-optin-v4';
 
 const NEO_CACHE_NAME =
   `neo-discord-cache-${NEO_CACHE_VERSION}`;
