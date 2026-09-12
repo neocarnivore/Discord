@@ -7,7 +7,7 @@
 */
 
 const NEO_CACHE_VERSION =
-  'neo-discord-join-v2';
+  'neo-discord-membership-v3';
 
 const NEO_CACHE_NAME =
   `neo-discord-cache-${NEO_CACHE_VERSION}`;
